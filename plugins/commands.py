@@ -183,6 +183,7 @@ async def start(client, message):
                     await log_msg.reply_text(
                         text=f"•• ʟɪɴᴋ ɢᴇɴᴇʀᴀᴛᴇᴅ ꜰᴏʀ ɪᴅ #{user_id} \n•• ᴜꜱᴇʀɴᴀᴍᴇ : {username} \n\n•• ᖴᎥᒪᗴ Nᗩᗰᗴ : {fileName}",
                         quote=True,
+                        protect_content=True,
                         disable_web_page_preview=True,
                         reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("🚀 Fast Download 🚀", url=download),  # we download Link
                                                             InlineKeyboardButton('🖥️ Watch online 🖥️', url=stream)]])  # web stream Link
@@ -201,7 +202,7 @@ async def start(client, message):
                     chat_id=message.from_user.id,
                     file_id=msg.get("file_id"),
                     caption=f_caption,
-                    protect_content=msg.get('protect', False),
+                    protect_content=msg.get('protect', True),
                     reply_markup=reply_markup
                 )
                 filesarr.append(msg)
@@ -213,7 +214,7 @@ async def start(client, message):
                     chat_id=message.from_user.id,
                     file_id=msg.get("file_id"),
                     caption=f_caption,
-                    protect_content=msg.get('protect', False),
+                    protect_content=msg.get('protect', True),
                     reply_markup=InlineKeyboardMarkup(button)
                 )
                 filesarr.append(msg)
@@ -274,6 +275,7 @@ async def start(client, message):
                 g = await msg.reply_text(
                     text=f"",
                     quote=True,
+                    protect_content=True,
                     disable_web_page_preview=True,
                     reply_markup=InlineKeyboardMarkup(
                         [
@@ -412,6 +414,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         await client.edit_message_media(
             query.message.chat.id, 
             query.message.id, 
+            protect_content=True, 
             InputMediaPhoto(random.choice(PICS))
         )
         reply_markup = InlineKeyboardMarkup(buttons)
@@ -419,6 +422,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         await query.message.edit_text(
             text=script.ABOUT_TXT.format(me2),
             reply_markup=reply_markup,
+            protect_content=True, 
             parse_mode=enums.ParseMode.HTML
         )
 
@@ -441,6 +445,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         await query.message.edit_text(
             text=script.START_TXT.format(query.from_user.mention, me2),
             reply_markup=reply_markup,
+            protect_content=True, 
             parse_mode=enums.ParseMode.HTML
         )
 
