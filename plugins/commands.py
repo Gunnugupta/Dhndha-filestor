@@ -202,7 +202,7 @@ async def start(client, message):
                     chat_id=message.from_user.id,
                     file_id=msg.get("file_id"),
                     caption=f_caption,
-                    protect_content=msg.get('protect', True),
+                    protect_content=True,
                     reply_markup=reply_markup
                 )
                 filesarr.append(msg)
@@ -214,7 +214,7 @@ async def start(client, message):
                     chat_id=message.from_user.id,
                     file_id=msg.get("file_id"),
                     caption=f_caption,
-                    protect_content=msg.get('protect', True),
+                    protect_content=True,
                     reply_markup=InlineKeyboardMarkup(button)
                 )
                 filesarr.append(msg)
@@ -257,7 +257,7 @@ async def start(client, message):
             msg = await client.send_cached_media(
                 chat_id=message.from_user.id,
                 file_id=file_id,
-                protect_content=True if pre == 'filep' else False,  
+                protect_content=True,  
             )
             filetype = msg.media
             file = getattr(msg, filetype.value)
@@ -331,7 +331,7 @@ async def start(client, message):
         chat_id=message.from_user.id,
         file_id=file_id,
         caption=f_caption,
-        protect_content=True if pre == 'filep' else False,
+        protect_content=True,
     )
     if STREAM_MODE == True:
         g = await x.reply_text(
