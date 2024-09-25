@@ -26,7 +26,7 @@ API_HASH = environ.get("API_HASH", "d0824f557b06f6c87b0b0ce1e7c2f1e4")
 BOT_TOKEN = environ.get("BOT_TOKEN", "7541145414:AAHfT6ce6IPrcScfI9aJCtS6VKK3nA2PY_E")
 
 PICS = (environ.get('PICS', '')).split() # Bot Start Picture
-ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '7299439165').split()]
+ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '7299439165 7362655192').split()]
 BOT_USERNAME = environ.get("BOT_USERNAME", "Tanushreetokenbot") # without @
 PORT = environ.get("PORT", "8080")
 
