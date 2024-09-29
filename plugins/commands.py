@@ -54,6 +54,16 @@ def get_size(size):
 # Don't Remove Credit Tg - @VJ_Botz
 # Subscribe YouTube Channel For Amazing Bot https://youtube.com/@Tech_VJ
 # Ask Doubt on telegram @KingVJ0
+@Client.on_message(filters.private & filters.user(ADMINS)  & filters.command(["stats"]))
+async def all_db_users_here(client, message):
+    start_t = time.time()
+    rkn = await message.reply_text("Processing...")
+    uptime = time.strftime("%Hh%Mm%Ss", time.gmtime(time.time() - client.uptime))    
+    total_users = await total_user()
+    end_t = time.time()
+    time_taken_s = (end_t - start_t) * 1000
+    await rkn.edit(text=f"**--Bot Processed--** \n\n**Bot Started UpTime:** {uptime} \n**Bot Current Ping:** `{time_taken_s:.3f} ᴍꜱ` \n**All Bot Users:** `{total_users}`")
+
 
 
 @Client.on_message(filters.command("start") & filters.incoming)
